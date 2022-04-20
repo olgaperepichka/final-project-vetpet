@@ -3,11 +3,10 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
   :root {
-    --color-black: #0B0C10;
-    --color-darkgray: #1F2833;
-    --color-lightgray:#C5C6C7;
-    --color-aquamarine: #66FCF1;
-    --color-cadetblue: #45A29E;
+    --color-black: #202427;
+    --color-mediumgray: #a4a4a4;
+    --color-whitesmoke: #f1f1f1;
+    --color-orange: #f36e17;
   }
 
   html,body {
@@ -17,6 +16,10 @@ export default createGlobalStyle`
         margin: 0;
         box-sizing: border-box;
         font-family: 'Open Sans', sans-serif;
+      }
+
+      a{
+        color: orange;
       }
   }
 `;
