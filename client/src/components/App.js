@@ -6,6 +6,7 @@ import Header from './Header/Header'
 import Homepage from './pages/Homepage';
 import Contact from './pages/ContactUs';
 import Login from './pages/Login';
+import PawsStripe from './PawsStripe';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <GlobalStyle/>
     <AppWrapper>
         <Header/>
+        <PawsStripe />
         <Routes>
           <Route path="/" exact element={<Homepage/>} />
           <Route path="/contact" element={<Contact/>} />
