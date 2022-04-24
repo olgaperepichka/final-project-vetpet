@@ -21,5 +21,6 @@ export default createGlobalStyle`
       a{
         color: orange;
       }
+
   }
 `;

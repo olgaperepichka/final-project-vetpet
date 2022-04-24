@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 
 const Wrapper = styled.div`
-  margin-top: 75px;
+  margin-top: 80px;
   text-align: center;
 `
 const Title = styled.h1`
-  color: black;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  font-size: 52px;
 `
 
 export {Wrapper};
