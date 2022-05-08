@@ -1,13 +1,206 @@
-import React from 'react';
-// import styled from 'styled-components';
-import { Wrapper, Title } from '../../GlobalStyles/page-styles';
+import React from "react";
+import { useState, useEffect } from "react";
+import { Wrapper, Title, Subtitle } from "../../GlobalStyles/page-styles";
+import styled from "styled-components";
 
 const Homepage = () => {
- return (
-   <Wrapper>
-     <Title>Homepage</Title>
-   </Wrapper>
- );
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedDog, setSelectedDog] = useState(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await fetch(`https://api.TheDogAPI.com/v1/breeds`);
+        if (!response.ok) {
+          throw new Error(
+            `ERROR! Something goes wrong... The status is ${response.status}`
+          );
+        }
+        let apiData = await response.json();
+        console.log(apiData);
+        setData(apiData);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+        setData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getData();
+  }, []);
+
+  const handleOnChange = (e) => {
+    const id = e.target.value;
+    const dog = data.find((x) => x.id === parseInt(id));
+    setSelectedDog(dog);
+  };
+
+  return (
+    <Wrapper>
+      <Title>Welcome to VetPet Clinic!</Title>
+      <Subtitle>We look forward to caring for your pet</Subtitle>
+      <Container>
+        <ChooseBreed>
+          <h3>Know Your Pet (KYT)</h3>
+          <span>Choose Breed:</span>
+          {loading && <span>A moment please...</span>}
+          {error && (
+            <div>{`There is a problem fetching the post data - ${error}`}</div>
+          )}
+          <span>
+            <select onChange={handleOnChange}>
+              {data &&
+                data.map(({ id, name }) => (
+                  <option key={id} value={id}>
+                    <p>{name}</p>
+                  </option>
+                ))}
+            </select>
+          </span>
+          {selectedDog && (
+            <DogContainer>
+              <h4>{selectedDog.name}</h4>
+              <div>Breed group: {selectedDog.breed_group}</div>
+              <div>Breed for: {selectedDog.bred_for}</div>
+              <div>Temperament: {selectedDog.temperament}</div>
+              <div>Life Span: {selectedDog.life_span}</div>
+              <div>Height: {selectedDog.height.metric}</div>
+              <div>Weight: {selectedDog.weight.metric}</div>
+              <div>Origin: {selectedDog.origin}</div>
+              <div>
+                <img alt={selectedDog.name} src={selectedDog.image.url} />
+              </div>
+            </DogContainer>
+          )}
+        </ChooseBreed>
+        <Services>
+          <h3>Our Services</h3>
+          <h4>Vaccination</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <h4>Sterilization / Micro-chipping</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <h4>Yearly check-up</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </Services>
+      </Container>
+    </Wrapper>
+  );
 };
 
 export default Homepage;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
+`;
+const Services = styled.div`
+  width: 50%;
+  padding: 20px 20px;
+  margin: 25px 0px;
+  width: 50%;
+  background: var(--color-orange);
+  line-height: 1.5;
+  text-align: left;
+  color: var(--color-whitesmoke);
+
+  h3 {
+    font-size: 28px;
+    line-height: 1.5;
+    color: var(--color-whitesmoke);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  h4 {
+    color: darkslategray;
+    padding: 10px 0px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+  }
+`;
+
+const ChooseBreed = styled.div`
+  padding: 20px 0px;
+  margin: 25px 0px;
+  width: 50%;
+
+  h3 {
+    font-size: 28px;
+    line-height: 1.5;
+    color: orange;
+    margin-bottom: 10px;
+  }
+
+  span {
+    margin-top: 20px;
+  }
+  h4 {
+    font-size: 32px;
+    padding-bottom: 15px;
+  }
+  select {
+    margin-left: 20px;
+    padding-left: 5px;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+
+    select {
+      margin-left: 5px;
+    }
+
+    h3 {
+      margin-top: -40px;
+    }
+  }
+`;
+const DogContainer = styled.div`
+  padding: 20px 10px;
+  line-height: 1.5;
+
+  img {
+    padding-top: 25px;
+    width: 60%;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+`;

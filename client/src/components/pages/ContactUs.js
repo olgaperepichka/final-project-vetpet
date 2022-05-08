@@ -9,7 +9,7 @@ const Contact = () => {
       <Title>Contact Us</Title>
       <MapWrapper>
         <MapDiv>
-        <iframe title="VetPet clinic" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89717.29580245879!2d-73.47066715516753!3d45.35556431319153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc9a6d492e8eb77%3A0x4a3e61f17572a268!2sH%C3%B4pital%20V%C3%A9t%C3%A9rinaire%20du%20Haut-Richelieu!5e0!3m2!1sen!2sca!4v1650585131492!5m2!1sen!2sca" allowfullscreen="yes" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="VetPet clinic" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89717.29580245879!2d-73.47066715516753!3d45.35556431319153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc9a6d492e8eb77%3A0x4a3e61f17572a268!2sH%C3%B4pital%20V%C3%A9t%C3%A9rinaire%20du%20Haut-Richelieu!5e0!3m2!1sen!2sca!4v1650585131492!5m2!1sen!2sca" allowFullScreen="yes" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
 
         </MapDiv>
         <AddressDiv>
