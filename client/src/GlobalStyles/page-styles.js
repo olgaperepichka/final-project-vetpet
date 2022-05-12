@@ -3,6 +3,22 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   margin-top: 80px;
   text-align: center;
+
+  h3 {
+    font-size: 28px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .cta {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: whitesmoke;
+    color: darkslategray;
+    text-decoration: none;
+  }
 `;
 const Title = styled.h1`
   color: var(--color-orange);

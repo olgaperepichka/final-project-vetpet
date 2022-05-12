@@ -1,0 +1,46 @@
+[
+  {
+    "clientId": "client1",
+    "fname": "Ivan",
+    "lname": "Petrov",
+    "email": "ivan_petrov@test.com",
+    "password": "1234",
+    "phone": "514-111-1111",
+    "address": "111 rue Test, Montreal, H2K 1S4",
+    "doctors": ["dr1", "dr3"],
+    "pets": ["pet1"]
+  },
+  {
+    "clientId": "client2",
+    "fname": "John",
+    "lname": "Li",
+    "email": "john_li@test.com",
+    "password": "1234",
+    "phone": "514-222-2222",
+    "address": "222 rue Test, Montreal, H2K 1S4",
+    "doctors": ["dr2"],
+    "pets": ["pet2"]
+  },
+  {
+    "clientId": "client3",
+    "fname": "Diana",
+    "lname": "Caroll",
+    "email": "diana_caroll@test.com",
+    "password": "1234",
+    "phone": "514-333-3333",
+    "address": "333 rue Test, Montreal, H2K 1S4",
+    "doctors": ["dr2"],
+    "pets": ["pet3", "pet4"]
+  },
+  {
+    "clientId": "client4",
+    "fname": "Tom",
+    "lname": "Kruz",
+    "email": "tom_kruz@test.com",
+    "password": "1234",
+    "phone": "514-444-4444",
+    "address": "444 rue Test, Montreal, H2K 1S4",
+    "doctors": ["dr3"],
+    "pets": ["pet5"]
+  }
+]

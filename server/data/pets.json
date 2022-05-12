@@ -1,0 +1,110 @@
+[
+  {
+    "petId": "pet1",
+    "name": "Bobik",
+    "breed": "German Shepherd",
+    "age": "1",
+    "dateOfBirth": "09.01.2021",
+    "ownerId": "client1",
+    "doctors": ["dr1", "dr3"],
+    "vaccination": [
+      {"vaccineName": "vac1",
+      "vaccineDate": "09.02.2021",
+      "dutyDoctor": "dr1"
+      },
+      {"vaccineName": "vac2",
+        "vaccineDate": "09.07.2021",
+        "dutyDoctor": "dr3"
+      }
+    ]
+  },
+  {
+    "petId": "pet2",
+    "name": "Tuzik",
+    "breed": "Labrador",
+    "age": "2",
+    "dateOfBirth": "10.02.2020",
+    "ownerId": "client2",
+    "doctors": ["dr1"],
+    "vaccination": [
+      {"vaccineName": "vac1",
+      "vaccineDate": "10.03.2020",
+      "dutyDoctor": "dr1"
+      },
+      {"vaccineName": "vac2",
+        "vaccineDate": "10.08.2020",
+        "dutyDoctor": "dr1"
+      },
+      {"vaccineName": "vac3",
+        "vaccineDate": "10.12.2020",
+        "dutyDoctor": "dr1"
+      }
+    ]
+  },
+  {
+    "petId": "pet3",
+    "name": "Zillia",
+    "breed": "Shi Tzu",
+    "age": "3",
+    "dateOfBirth": "10.03.2019",
+    "ownerId": "client3",
+    "doctors": ["dr2"],
+    "vaccination": [
+      {"vaccineName": "vac1",
+      "vaccineDate": "10.04.2019",
+      "dutyDoctor": "dr2"
+      },
+      {"vaccineName": "vac2",
+        "vaccineDate": "10.09.2019",
+        "dutyDoctor": "dr2"
+      },
+      {"vaccineName": "vac3",
+        "vaccineDate": "10.01.2020",
+        "dutyDoctor": "dr2"
+      }
+    ]
+  },
+  {
+    "petId": "pet4",
+    "name": "Leo",
+    "breed": "Shi Tzu",
+    "age": "3",
+    "dateOfBirth": "10.03.2019",
+    "ownerId": "client3",
+    "doctors": ["dr2"],
+    "vaccination": [
+      {"vaccineName": "vac1",
+      "vaccineDate": "10.04.2019",
+      "dutyDoctor": "dr2"
+      },
+      {"vaccineName": "vac2",
+        "vaccineDate": "10.09.2019",
+        "dutyDoctor": "dr2"
+      },
+      {"vaccineName": "vac3",
+        "vaccineDate": "10.01.2020",
+        "dutyDoctor": "dr2"
+      }
+    ]
+  },
+  {
+    "petId": "pet5",
+    "name": "Ursula",
+    "breed": "Basset Hound",
+    "age": "1",
+    "dateOfBirth": "18.01.2021",
+    "ownerId": "client4",
+    "doctors": ["dr3"],
+    "vaccination": [
+      {"vaccineName": "vac1",
+      "vaccineDate": "18.04.2021",
+      "dutyDoctor": "dr3"
+      },
+      {"vaccineName": "vac2",
+        "vaccineDate": "18.09.2021",
+        "dutyDoctor": "dr3"
+      }
+    ]
+  }
+]
+
