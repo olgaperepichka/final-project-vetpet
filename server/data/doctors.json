@@ -1,0 +1,29 @@
+[
+  {
+    "drId": "dr1",
+    "fname": "Marie",
+    "lname": "Petit",
+    "email": "marie_petit@test.com",
+    "password": "1234",
+    "clients": ["client1", "client2"],
+    "pets": ["pet1", "pet2"]
+  },
+  {
+    "drId": "dr2",
+    "fname": "Zach",
+    "lname": "Nugent",
+    "email": "zach_nugent@test.com",
+    "password": "1234",
+    "clients": ["client3"],
+    "pets": ["pet3", "pet4"]
+  },
+  {
+    "drId": "dr3",
+    "fname": "Angela",
+    "lname": "Choi",
+    "email": "angela_choi@test.com",
+    "password": "1234",
+    "clients": ["client1", "client4"],
+    "pets": ["pet1","pet5"]
+  }
+]

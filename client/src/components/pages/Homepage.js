@@ -9,6 +9,7 @@ const Homepage = () => {
   const [error, setError] = useState(null);
   const [selectedDog, setSelectedDog] = useState(null);
 
+  //fetch data from API to display breeds and info about selected breed
   useEffect(() => {
     const getData = async () => {
       try {
@@ -32,6 +33,7 @@ const Homepage = () => {
     getData();
   }, []);
 
+  //handle data from selected list with dogs
   const handleOnChange = (e) => {
     const id = e.target.value;
     const dog = data.find((x) => x.id === parseInt(id));
@@ -42,7 +44,7 @@ const Homepage = () => {
     <Wrapper>
       <Title>Welcome to VetPet Clinic!</Title>
       <Subtitle>We look forward to caring for your pet</Subtitle>
-      <Container>
+      <KYTservices>
         <ChooseBreed>
           <h3>Know Your Pet (KYT)</h3>
           <span>Choose Breed:</span>
@@ -55,7 +57,7 @@ const Homepage = () => {
               {data &&
                 data.map(({ id, name }) => (
                   <option key={id} value={id}>
-                    <p>{name}</p>
+                    {name}
                   </option>
                 ))}
             </select>
@@ -67,9 +69,8 @@ const Homepage = () => {
               <div>Breed for: {selectedDog.bred_for}</div>
               <div>Temperament: {selectedDog.temperament}</div>
               <div>Life Span: {selectedDog.life_span}</div>
-              <div>Height: {selectedDog.height.metric}</div>
-              <div>Weight: {selectedDog.weight.metric}</div>
-              <div>Origin: {selectedDog.origin}</div>
+              <div>Height: {selectedDog.height.metric} cm</div>
+              <div>Weight: {selectedDog.weight.metric} kg</div>
               <div>
                 <img alt={selectedDog.name} src={selectedDog.image.url} />
               </div>
@@ -109,20 +110,85 @@ const Homepage = () => {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </Services>
-      </Container>
+      </KYTservices>
+      <Team>
+        <TeamTextDiv>
+          <h3>Our doctors</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <a className="cta" href="/doctors">
+            Meet our team
+          </a>
+        </TeamTextDiv>
+        <TeamImgDiv>
+          <img alt="doctors" src="doctors.jpg" />
+        </TeamImgDiv>
+      </Team>
     </Wrapper>
   );
 };
 
 export default Homepage;
 
-const Container = styled.div`
+const Team = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+const TeamTextDiv = styled.div`
+  width: 50%;
+  padding: 20px 20px 50px 20px;
+  width: 50%;
+  background: var(--color-orange);
+  line-height: 1.5;
+  text-align: center;
+  color: var(--color-whitesmoke);
+
+  h3 {
+    color: darkslategray;
+  }
+
+  p {
+    text-align: left;
+    padding-bottom: 50px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const TeamImgDiv = styled.div`
+  line-height: 0;
+  width: 50%;
+
+  img {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const KYTservices = styled.div`
   display: flex;
   flex-direction: row;
   @media (max-width: 768px) {
     flex-direction: column-reverse;
   }
 `;
+
 const Services = styled.div`
   width: 50%;
   padding: 20px 20px;
@@ -134,11 +200,7 @@ const Services = styled.div`
   color: var(--color-whitesmoke);
 
   h3 {
-    font-size: 28px;
-    line-height: 1.5;
     color: var(--color-whitesmoke);
-    margin-bottom: 10px;
-    text-align: center;
   }
 
   h4 {
@@ -148,10 +210,8 @@ const Services = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-
-      padding-top: 50px;
-      padding-bottom: 50px;
-    }
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 `;
 
@@ -161,10 +221,7 @@ const ChooseBreed = styled.div`
   width: 50%;
 
   h3 {
-    font-size: 28px;
-    line-height: 1.5;
     color: orange;
-    margin-bottom: 10px;
   }
 
   span {
