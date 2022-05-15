@@ -6,6 +6,7 @@ import Header from "./Header/Header";
 import Homepage from "./pages/Homepage";
 import Contact from "./pages/ContactUs";
 import Doctors from "./pages/Doctors";
+import Doctor from "./pages/Doctor";
 import Login from "./pages/Login";
 import PawsStripe from "./PawsStripe";
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" exact element={<Homepage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/doctors" element={<Doctors />} />
+          <Route path="/doctors/:drId" element={<Doctor />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </AppWrapper>

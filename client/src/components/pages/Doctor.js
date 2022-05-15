@@ -1,0 +1,110 @@
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import { Wrapper, Title } from "../../GlobalStyles/page-styles";
+import ServerPath from "../../const/const";
+
+const Doctor = () => {
+  const { drId } = useParams();
+  const [doctor, setDoctor] = useState([]);
+  const [clients, setClients] = useState([]);
+  const [pets, setPets] = useState([]);
+
+  //display doctor's personal data
+  useEffect(() => {
+    fetch(`${ServerPath}/doctors/${drId}`)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error(`Error within Doctor data! Status: ${res.status}`);
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setDoctor(data.data);
+      })
+      .catch((error) => console.log(error));
+  }, [drId]);
+
+  //display clients of selected doctor
+  useEffect(() => {
+    fetch(`${ServerPath}/clients`)
+      .then((res) => res.json())
+      .then((json) => {
+        const allClients = json.data;
+        const filteredClients = allClients.filter((client) =>
+          doctor.clients.some((id) => id === client.clientId)
+        );
+        setClients(filteredClients);
+      });
+  }, [doctor]);
+
+  //display pets of selected doctor
+  useEffect(() => {
+    fetch(`${ServerPath}/pets`)
+      .then((res) => res.json())
+      .then((json) => {
+        const allPets = json.data;
+        const filteredPets = allPets.filter((pet) =>
+          doctor.pets.some((id) => id === pet.petId)
+        );
+        setPets(filteredPets);
+      });
+  }, [doctor]);
+
+  return (
+    <Wrapper>
+      <InfoWrapper>
+        <Title>
+          Dr. {doctor.fname} {doctor.lname}
+        </Title>
+        <PersonalInfo>
+          <DoctorEmail>Email: {doctor.email}</DoctorEmail>
+          <DoctorPassword>Password: {doctor.password}</DoctorPassword>
+        </PersonalInfo>
+
+        <ClientsList>
+          <ul>
+            Clients:{" "}
+            {clients.map(function (client) {
+              return (
+                <li key={`${client.clientId}`}>
+                  {client.lname} {client.fname}
+                </li>
+              );
+            })}
+          </ul>
+        </ClientsList>
+        <PetsList>
+          <ul>
+            Pets:{" "}
+            {pets.map(function (pet) {
+              return (
+                <li key={`${pet.petId}`}>
+                  {pet.name} (breed: {pet.breed} )
+                </li>
+              );
+            })}
+          </ul>
+        </PetsList>
+      </InfoWrapper>
+    </Wrapper>
+  );
+};
+
+const InfoWrapper = styled.div``;
+const PersonalInfo = styled.div`
+  padding: 25px 10px;
+  line-height: 1.5;
+`;
+const DoctorEmail = styled.div``;
+const DoctorPassword = styled.div``;
+const ClientsList = styled.div`
+  padding: 25px 10px;
+`;
+const PetsList = styled.div`
+  padding: 25px 10px;
+`;
+
+export default Doctor;

@@ -22,6 +22,24 @@ router.get("/doctors", (req, res) => {
     });
 });
 
+router.get("/doctors/:drId", (req, res) => {
+  const drId = req.params;
+  Doctor.findOne(drId)
+    .then((doctor) => {
+      res.status(200).json({
+        status: 200,
+        data: doctor,
+        message: "success",
+      });
+    })
+    .catch((err) => {
+      res.status(err).json({
+        status: err,
+        message: "error",
+      });
+    });
+});
+
 router.get("/clients", (req, res) => {
   Client.find()
     .then((client) => {
@@ -39,8 +57,45 @@ router.get("/clients", (req, res) => {
     });
 });
 
+router.get("/clients/:clientId", (req, res) => {
+  const clientId = req.params.clientId;
+  console.log(clientId);
+  Client.findById(clientId)
+    .then((client) => {
+      res.status(200).json({
+        status: 200,
+        data: client,
+        message: "success",
+      });
+    })
+    .catch((err) => {
+      res.status(err).json({
+        status: err,
+        message: "error",
+      });
+    });
+});
+
 router.get("/pets", (req, res) => {
   Pet.find()
+    .then((pet) => {
+      res.status(200).json({
+        status: 200,
+        data: pet,
+        message: "success",
+      });
+    })
+    .catch((err) => {
+      res.status(err).json({
+        status: err,
+        message: "error",
+      });
+    });
+});
+
+router.get("/pets/:petId", (req, res) => {
+  const petId = req.params;
+  Pet.findOne(petId)
     .then((pet) => {
       res.status(200).json({
         status: 200,
