@@ -141,6 +141,7 @@ const Team = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-top: -25px;
   @media (max-width: 768px) {
     flex-direction: column;
   }

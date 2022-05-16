@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 import { Wrapper, Title } from "../../GlobalStyles/page-styles";
 import ServerPath from "../../const/const";
 
 const Doctor = () => {
   const { drId } = useParams();
-  const [doctor, setDoctor] = useState([]);
+  const [doctor, setDoctor] = useState(null);
   const [clients, setClients] = useState([]);
   const [pets, setPets] = useState([]);
 
@@ -21,7 +21,6 @@ const Doctor = () => {
         }
       })
       .then((data) => {
-        console.log(data);
         setDoctor(data.data);
       })
       .catch((error) => console.log(error));
@@ -32,6 +31,9 @@ const Doctor = () => {
     fetch(`${ServerPath}/clients`)
       .then((res) => res.json())
       .then((json) => {
+        if (!doctor) {
+          return;
+        }
         const allClients = json.data;
         const filteredClients = allClients.filter((client) =>
           doctor.clients.some((id) => id === client.clientId)
@@ -45,6 +47,9 @@ const Doctor = () => {
     fetch(`${ServerPath}/pets`)
       .then((res) => res.json())
       .then((json) => {
+        if (!doctor) {
+          return;
+        }
         const allPets = json.data;
         const filteredPets = allPets.filter((pet) =>
           doctor.pets.some((id) => id === pet.petId)
@@ -53,6 +58,9 @@ const Doctor = () => {
       });
   }, [doctor]);
 
+  if (!doctor) {
+    return <p>"loading"</p>;
+  }
   return (
     <Wrapper>
       <InfoWrapper>
@@ -70,7 +78,9 @@ const Doctor = () => {
             {clients.map(function (client) {
               return (
                 <li key={`${client.clientId}`}>
-                  {client.lname} {client.fname}
+                  <Link to={`/clients/${client.clientId}`}>
+                    {client.lname} {client.fname}
+                  </Link>
                 </li>
               );
             })}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Wrapper, Title, Subtitle } from "../../GlobalStyles/page-styles";
 import ServerPath from "../../const/const";
@@ -29,7 +30,9 @@ const Doctors = () => {
             return (
               <Card key={doctor["_id"]}>
                 <h2 className="name">
-                  Dr. {doctor["fname"]}&nbsp;{doctor["lname"]}
+                  <Link to={`/doctors/${doctor.drId}`}>
+                    Dr. {doctor["fname"]}&nbsp;{doctor["lname"]}{" "}
+                  </Link>
                 </h2>
               </Card>
             );

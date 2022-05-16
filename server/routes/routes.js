@@ -25,6 +25,7 @@ router.get("/doctors", (req, res) => {
 router.get("/doctors/:drId", (req, res) => {
   const drId = req.params;
   Doctor.findOne(drId)
+    .lean()
     .then((doctor) => {
       res.status(200).json({
         status: 200,
@@ -58,9 +59,9 @@ router.get("/clients", (req, res) => {
 });
 
 router.get("/clients/:clientId", (req, res) => {
-  const clientId = req.params.clientId;
-  console.log(clientId);
-  Client.findById(clientId)
+  const clientId = req.params;
+  Client.findOne(clientId)
+    .lean()
     .then((client) => {
       res.status(200).json({
         status: 200,
