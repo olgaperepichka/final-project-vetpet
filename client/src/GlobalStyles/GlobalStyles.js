@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-
 export default createGlobalStyle`
   :root {
     --color-black: #202427;
@@ -20,6 +19,7 @@ export default createGlobalStyle`
 
       a{
         color: orange;
+        text-decoration: none;
       }
 
   }
