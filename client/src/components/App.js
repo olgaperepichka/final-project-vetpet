@@ -8,6 +8,7 @@ import Contact from "./pages/ContactUs";
 import Doctors from "./pages/Doctors";
 import Doctor from "./pages/Doctor";
 import Client from "./pages/Client";
+import Pet from "./pages/Pet";
 import Login from "./pages/Login";
 import PawsStripe from "./PawsStripe";
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/doctors" element={<Doctors />} />
           <Route path="/doctors/:drId" element={<Doctor />} />
           <Route path="/clients/:clientId" element={<Client />} />
+          <Route path="/pets/:petId" element={<Pet />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </AppWrapper>

@@ -80,7 +80,7 @@ const Client = () => {
           <ClientAddress>Address: {client.address}</ClientAddress>
         </PersonalInfo>
 
-        <ClientsList>
+        <DrList>
           <ul>
             My Doctors:{" "}
             {doctors.map(function (doctor) {
@@ -91,7 +91,7 @@ const Client = () => {
               );
             })}
           </ul>
-        </ClientsList>
+        </DrList>
 
         <PetsList>
           Owner of Pets:{" "}
@@ -142,7 +142,7 @@ const ClientEmail = styled.div``;
 const ClientPassword = styled.div``;
 const ClientPhone = styled.div``;
 const ClientAddress = styled.div``;
-const ClientsList = styled.div`
+const DrList = styled.div`
   padding: 25px 10px;
 `;
 const PetsList = styled.div`
