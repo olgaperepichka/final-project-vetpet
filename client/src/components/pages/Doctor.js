@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { Wrapper, Title } from "../../GlobalStyles/page-styles";
 import ServerPath from "../../const/const";
 
+import Scheduler from "./Scheduler";
+
 const Doctor = () => {
   const { drId } = useParams();
   const [doctor, setDoctor] = useState(null);
@@ -74,13 +76,13 @@ const Doctor = () => {
 
         <ClientsList>
           <ul>
-            Clients:{" "}
+            All my clients:{" "}
             {clients.map(function (client) {
               return (
                 <li key={`${client.clientId}`}>
                   <Link to={`/clients/${client.clientId}`}>
                     {client.lname} {client.fname}
-                  </Link>
+                  </Link>{" "}
                 </li>
               );
             })}
@@ -88,17 +90,19 @@ const Doctor = () => {
         </ClientsList>
         <PetsList>
           <ul>
-            Pets:{" "}
+            Pets served:{" "}
             {pets.map(function (pet) {
               return (
                 <li key={`${pet.petId}`}>
-                  {pet.name} (breed: {pet.breed} )
+                  <Link to={`/pets/${pet.petId}`}>{pet.name}</Link> ({" "}
+                  {pet.breed} )
                 </li>
               );
             })}
           </ul>
         </PetsList>
       </InfoWrapper>
+      <Scheduler />
     </Wrapper>
   );
 };

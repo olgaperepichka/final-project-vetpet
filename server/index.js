@@ -15,7 +15,7 @@ express()
   .use(function (req, res, next) {
     res.header(
       "Access-Control-Allow-Methods",
-      "OPTIONS, HEAD, GET, PUT, POST, DELETE"
+      "OPTIONS, HEAD, GET, PUT, PATCH, POST, DELETE"
     );
     res.header(
       "Access-Control-Allow-Headers",

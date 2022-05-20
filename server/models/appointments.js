@@ -1,37 +1,29 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-// schema of model @ Doctors
+// schema of model @ Clients
 
-const doctorsSchema = new Schema(
+const appointmentSchema = new Schema(
   {
     drId: {
       type: String,
       require: true,
     },
-    fname: {
+    clientId: {
       type: String,
       require: true,
     },
-    lname: {
+    petId: {
       type: String,
       require: true,
     },
-    email: {
+    reason: {
       type: String,
       require: true,
     },
-    password: {
+    dateTime: {
       type: String,
       require: true,
-    },
-    clients: {
-      type: Array,
-      require: false,
-    },
-    pets: {
-      type: Array,
-      require: false,
     },
   },
   {
@@ -39,6 +31,6 @@ const doctorsSchema = new Schema(
   }
 );
 
-// export of model @ doctors
+// export of model @ apointment
 
-module.exports = mongoose.model("Doctor", doctorsSchema);
+module.exports = mongoose.model("Appointment", appointmentSchema);
