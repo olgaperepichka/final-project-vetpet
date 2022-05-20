@@ -36,9 +36,6 @@ const Client = () => {
         if (!client) {
           return;
         }
-        console.log("allDoctors:", allDoctors);
-
-        console.log("allClients:", client);
 
         const filteredDoctors = allDoctors.filter((doctor) =>
           client.doctors.some((id) => id === doctor.drId)
@@ -82,7 +79,7 @@ const Client = () => {
 
         <DrList>
           <ul>
-            My Doctors:{" "}
+            Doctors who served me:{" "}
             {doctors.map(function (doctor) {
               return (
                 <li key={`${doctor.drId}`}>

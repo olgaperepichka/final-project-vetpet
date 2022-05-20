@@ -44,22 +44,6 @@ const Pet = () => {
       });
   }, [pet]);
 
-  //display owner (client) of selected pet
-  // useEffect(() => {
-  //   fetch(`${ServerPath}/clients`)
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       if (!pet) {
-  //         return;
-  //       }
-  //       const allClients = json.data;
-  //       const filteredClients = allClients.filter(
-  //         (client) => pet.ownerId === client.pets.clientId
-  //       );
-  //       setClient(filteredClients);
-  //     });
-  // }, [pet]);
-
   useEffect(() => {
     fetch(`${ServerPath}/clients`)
       .then((res) => res.json())
