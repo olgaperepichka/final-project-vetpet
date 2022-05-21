@@ -4,9 +4,9 @@ const Doctor = require("../models/doctors");
 const Pet = require("../models/pets");
 const Client = require("../models/clients");
 const Appointment = require("../models/appointments");
+const User = require("../models/users");
 
 //DOCTORS
-
 // GET "/doctors" (get info about all doctors)
 router.get("/doctors", (req, res) => {
   Doctor.find()

@@ -20,7 +20,6 @@ const Homepage = () => {
           );
         }
         let apiData = await response.json();
-        console.log(apiData);
         setData(apiData);
         setError(null);
       } catch (err) {

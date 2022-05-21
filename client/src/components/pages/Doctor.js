@@ -71,7 +71,6 @@ const Doctor = () => {
         </Title>
         <PersonalInfo>
           <DoctorEmail>Email: {doctor.email}</DoctorEmail>
-          <DoctorPassword>Password: {doctor.password}</DoctorPassword>
         </PersonalInfo>
 
         <ClientsList>
@@ -113,7 +112,6 @@ const PersonalInfo = styled.div`
   line-height: 1.5;
 `;
 const DoctorEmail = styled.div``;
-const DoctorPassword = styled.div``;
 const ClientsList = styled.div`
   padding: 25px 10px;
 `;

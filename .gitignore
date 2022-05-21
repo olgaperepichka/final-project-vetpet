@@ -5,6 +5,7 @@ node_modules
 /.pnp
 .pnp.js
 .env
+/client/src/components/pages/firebase-config.js
 
 # testing
 /coverage
