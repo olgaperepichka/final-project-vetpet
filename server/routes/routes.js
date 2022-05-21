@@ -4,9 +4,47 @@ const Doctor = require("../models/doctors");
 const Pet = require("../models/pets");
 const Client = require("../models/clients");
 const Appointment = require("../models/appointments");
+const User = require("../models/users");
+
+//LOGIN
+//sign-up
+// router.post("/login", async (req, res) => {
+//   const email = req.body.email;
+//   const password = req.body.password;
+
+//   await User.create({ email, password }, (err, data) => {
+//     if (err) {
+//       throw new Error();
+//     }
+//     res.status(200).json({
+//       status: 200,
+//       message: "Logged in",
+//     });
+//   });
+// });
+
+//sign-in
+// router.get("/login", async (req, res) => {
+//   const email = req.body.email;
+//   const password = req.body.password;
+
+//   await User.find()
+//     .then((user) => {
+//       res.status(200).json({
+//         status: 200,
+//         data: user,
+//         message: "success",
+//       });
+//     })
+//     .catch((err) => {
+//       res.status(err).json({
+//         status: err,
+//         message: "error",
+//       });
+//     });
+// });
 
 //DOCTORS
-
 // GET "/doctors" (get info about all doctors)
 router.get("/doctors", (req, res) => {
   Doctor.find()
