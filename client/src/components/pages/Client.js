@@ -71,15 +71,21 @@ const Client = () => {
           {client.fname} {client.lname}
         </Subtitle>
         <PersonalInfo>
-          <ClientEmail>Email: {client.email}</ClientEmail>
-          <ClientPassword>Password: {client.password}</ClientPassword>
-          <ClientPhone>Phone: {client.phone}</ClientPhone>
-          <ClientAddress>Address: {client.address}</ClientAddress>
+          <ClientEmail>
+            <strong>Email: </strong>
+            {client.email}
+          </ClientEmail>
+          <ClientPhone>
+            <strong>Phone:</strong> {client.phone}
+          </ClientPhone>
+          <ClientAddress>
+            <strong>Address:</strong> {client.address}
+          </ClientAddress>
         </PersonalInfo>
 
         <DrList>
           <ul>
-            Doctors who served me:{" "}
+            <h3>Doctors who did vaccination: </h3>
             {doctors.map(function (doctor) {
               return (
                 <li key={`${doctor.drId}`}>
@@ -91,23 +97,25 @@ const Client = () => {
         </DrList>
 
         <PetsList>
-          Owner of Pets:{" "}
+          <h3>Owner of Pets: </h3>
           {pets.map(function (pet) {
             const petBirthday = moment(pet.dateOfBirth).format("DD MMM, YYYY");
             return (
               <PetInfo key={`${pet.petId}`}>
-                <div>Name: {pet.name}</div>
+                <h4>{pet.name}</h4>
                 <div>Breed: {pet.breed}</div>
                 <div>Age: {pet.age}</div>
                 <div>Date of pet's birth: {petBirthday}</div>
                 <VaccineContainer>
-                  Vaccinations:&nbsp;
+                  <strong>
+                    <u>Vaccinations:</u>
+                  </strong>
                   {pet.vaccination.map((vaccine, doctor) => (
                     <Vaccine key={`${vaccine.vaccineName}`}>
-                      <div>Vaccine: {vaccine.vaccineName}</div>
-                      <div>VaccineDate: {vaccine.vaccineDate}</div>
+                      <div>Vaccine name: {vaccine.vaccineName}</div>
+                      <div>Vaccine Date: {vaccine.vaccineDate}</div>
                       <div>
-                        Doctor who did vaccination:
+                        Vaccine done by doctor:
                         {doctors
                           .filter((doctor) => {
                             return doctor.drId === vaccine.dutyDoctor;
@@ -131,25 +139,58 @@ const Client = () => {
 };
 
 const InfoWrapper = styled.div``;
+
 const PersonalInfo = styled.div`
   padding: 25px 10px;
   line-height: 1.5;
+  border: 1px solid black;
+  box-shadow: 0px 2px 10px 10px #888;
+  border-radius: 10px;
+  width: 30%;
+  margin: auto;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 const ClientEmail = styled.div``;
-const ClientPassword = styled.div``;
 const ClientPhone = styled.div``;
 const ClientAddress = styled.div``;
 const DrList = styled.div`
+  margin-top: 40px;
   padding: 25px 10px;
+  color: darkgreen;
+  background-color: orange;
+  line-height: 1.8;
+
+  h3 {
+    font-family: "Pacifico", cursive;
+    font-size: 38px;
+  }
 `;
 const PetsList = styled.div`
-  padding: 25px 10px;
+  padding: 50px 10px 0px 10px;
+  background-color: lightgray;
+  margin-bottom: -75px;
+
+  h3 {
+    font-family: "Pacifico", cursive;
+    font-size: 38px;
+  }
 `;
 
 const PetInfo = styled.div`
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 25px 10px;
   margin: 25px 10px;
+  line-height: 1.5;
+  font-size: 18px;
+  h4 {
+    font-family: "Pacifico";
+    font-size: 30px;
+    padding-bottom: 25px;
+    color: var(--color-orange);
+  }
 `;
 
 const VaccineContainer = styled.div`

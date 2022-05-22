@@ -22,7 +22,7 @@ const Doctors = () => {
 
   return (
     <Container>
-      <Wrapper>
+      <Wrap>
         <Title>Our Doctors</Title>
         <Subtitle>The team that you trust</Subtitle>
         <Cards>
@@ -38,7 +38,7 @@ const Doctors = () => {
             );
           })}
         </Cards>
-      </Wrapper>
+      </Wrap>
       <Image src="doctors_bkg.png" />
     </Container>
   );
@@ -46,9 +46,14 @@ const Doctors = () => {
 
 export default Doctors;
 
+const Wrap = styled.div`
+  margin-top: 80px;
+  text-align: center;
+  padding: 0px 0px 80px 0px;
+`;
 const Image = styled.img`
   width: 80vw;
-  margin-top: -58vh;
+  margin-top: -52vh;
   margin-right: 35px;
   z-index: -100;
 
@@ -63,6 +68,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+  box-shadow: 0 40px 20px -20px lightgray;
 `;
 
 const Cards = styled.div`

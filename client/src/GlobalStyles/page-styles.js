@@ -3,6 +3,9 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   margin-top: 80px;
   text-align: center;
+  box-shadow: 0px 10px 5px #888, 0px -10px 5px #888;
+  margin-bottom: 75px;
+  padding: 50px 0px;
 
   h3 {
     font-size: 28px;
@@ -12,8 +15,8 @@ const Wrapper = styled.div`
   }
 
   .cta {
-    border: 1px solid black;
-    border-radius: 25px;
+    border: 1px solid gray;
+    border-radius: 10px;
     padding: 10px 20px;
     background-color: whitesmoke;
     color: darkslategray;

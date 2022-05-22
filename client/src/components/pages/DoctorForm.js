@@ -17,13 +17,11 @@ const DoctorForm = ({ doctor }) => {
     })
       .then((res) => res.json())
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
-          console.log("doctor updated");
           return;
         }
         if (response.status === 401) {
-          setErrors(response.message);
+          setErrors(error, response.message);
           return;
         }
       })

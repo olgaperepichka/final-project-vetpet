@@ -68,6 +68,7 @@ const Pet = () => {
         <Title>Pet: {pet.name}</Title>
         <Subtitle>(ID: {pet.petId})</Subtitle>
         <PetInfo>
+          <img src="/logo-dog.jpg" alt="logo-dog" />
           <div>Breed: {pet.breed}</div>
           <div>Age: {pet.age}</div>
           <div>
@@ -98,8 +99,9 @@ const Pet = () => {
         </PetInfo>
 
         <DoctorList>
+          <img src="/related-doctors.jpeg" />
           <ul>
-            Related Doctors:{" "}
+            <h3>Related Doctors: </h3>
             {doctors.map(function (doctor) {
               return (
                 <li key={`${doctor.drId}`}>
@@ -112,7 +114,7 @@ const Pet = () => {
 
         <OwnerInfo>
           <OwnerName>
-            <div>Owner:</div>
+            <h3>Owner:</h3>
             Name:{" "}
             <Link to={`/clients/${client.clientId}`}>
               {client.fname} {client.lname}
@@ -129,18 +131,41 @@ const Pet = () => {
 
 const InfoWrapper = styled.div``;
 const OwnerInfo = styled.div`
-  padding: 25px 10px;
+  padding: 75px 10px;
   line-height: 1.5;
+  background: darkslategray;
+  color: whitesmoke;
+  h3 {
+    color: var(--color-orange);
+    font-family: "Pacifico";
+  }
 `;
 const OwnerName = styled.div``;
 const ClientEmail = styled.div``;
 const ClientPhone = styled.div``;
 const ClientAddress = styled.div``;
 const DoctorList = styled.div`
-  padding: 25px 10px;
+  padding: 50px 10px 75px 10px;
+  font-size: 18px;
+  h3 {
+    font-family: "Pacifico";
+  }
+  img {
+    width: 100%;
+    padding-bottom: 50px;
+  }
 `;
 const PetInfo = styled.div`
   padding: 25px 10px;
+  background: gray;
+  color: whitesmoke;
+  font-size: 18px;
+
+  img {
+    width: 250px;
+    border-radius: 50%;
+    margin: 25px auto;
+  }
 `;
 
 const VaccineContainer = styled.div`

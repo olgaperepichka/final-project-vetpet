@@ -4,7 +4,6 @@ const Doctor = require("../models/doctors");
 const Pet = require("../models/pets");
 const Client = require("../models/clients");
 const Appointment = require("../models/appointments");
-const User = require("../models/users");
 
 //DOCTORS
 // GET "/doctors" (get info about all doctors)
@@ -25,7 +24,7 @@ router.get("/doctors", (req, res) => {
     });
 });
 
-//POST "/doctors" (add new doctor)
+//POST "/doctors" (add 1 new doctor)
 router.post("/doctors", async (req, res) => {
   const drId = req.body.drId;
   const fname = req.body.fname;
@@ -63,8 +62,6 @@ router.patch("/doctors/:drId", async (req, res) => {
     await Doctor.findOneAndUpdate(query, update, options, (err, data) => {
       console.log(err, data);
       if (err) {
-        console.log(err);
-
         return res.status(401).json({
           status: 401,
           message: "Update doctor: something went wrong. Try again later!",
@@ -158,6 +155,80 @@ router.get("/clients/:clientId", (req, res) => {
     });
 });
 
+//POST "/clients" (add 1 new client)
+router.post("/clients", async (req, res) => {
+  const clientId = req.body.clientId;
+  const fname = req.body.fname;
+  const lname = req.body.lname;
+  const email = req.body.email;
+  const password = req.body.password;
+  const phone = req.body.phone;
+  const address = req.body.address;
+  const clients = req.body.clients;
+  const pets = req.body.pets;
+
+  await Client.create(
+    { clientId, fname, lname, email, password, phone, address, doctors, pets },
+    (err, data) => {
+      if (err) {
+        return res.status(401).json({
+          status: 401,
+          message: err,
+        });
+      }
+      res.status(200).json({
+        status: 200,
+        message: "Add new doctor: ok",
+      });
+    }
+  );
+});
+
+//PATCH "/doctors/:drId" (update selected doctor info)
+router.patch("/client/:clientId", async (req, res) => {
+  const drId = req.params.drId;
+  const query = { clientId };
+  const update = req.body;
+  const options = { new: true };
+
+  try {
+    await Doctor.findOneAndUpdate(query, update, options, (err, data) => {
+      if (err) {
+        return res.status(401).json({
+          status: 401,
+          message: "Update client: error",
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        message: "update client: ok",
+      });
+    }).clone();
+  } catch (err) {
+    console.log(err);
+    return res.status(401).json({
+      status: 401,
+      message: "Update doctor: something went wrong. Try again later!",
+    });
+  }
+});
+
+//DELETE "/doctors/:drId"
+router.delete("/clients/:clientId", async (req, res) => {
+  const clientId = req.params;
+  await Client.findOneAndDelete(drId, (err, data) => {
+    console.log(err, data);
+    if (err) {
+      throw new Error();
+    }
+    return res.status(200).json({
+      status: 200,
+      message: "Remove client: ok",
+    });
+  });
+});
+
+//******************* */
 //PETS
 //GET info about all pets
 router.get("/pets", (req, res) => {
@@ -178,6 +249,26 @@ router.get("/pets", (req, res) => {
 });
 
 //Appointments
+//GET all appointments
+router.get("/appointments", (req, res) => {
+  Appointment.find()
+
+    .then((appointment) => {
+      res.status(200).json({
+        status: 200,
+        data: appointment,
+        message: "success",
+      });
+    })
+    .catch((err) => {
+      res.status(err).json({
+        status: err,
+        message: "error",
+      });
+    });
+});
+
+// POST (make an appointment)
 router.post("/appointments", async (req, res) => {
   const drId = req.body.drId;
   const petId = req.body.petId;

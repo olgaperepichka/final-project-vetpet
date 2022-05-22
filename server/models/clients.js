@@ -25,10 +25,7 @@ const clientsSchema = new Schema(
       type: String,
       require: true,
     },
-    password: {
-      type: String,
-      require: true,
-    },
+
     phone: {
       type: String,
       require: true,
