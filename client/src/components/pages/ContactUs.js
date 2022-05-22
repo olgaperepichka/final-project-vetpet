@@ -108,22 +108,22 @@ const ContactImg = styled.img`
   }
 
   @media (max-width: 540px) {
-    top: 350px;
+    top: 400px;
   }
 
   @media (max-width: 500px) {
-    top: 400px;
+    top: 450px;
     right: 10px;
   }
 
   @media (max-width: 375px) {
-    top: 440px;
+    top: 500px;
     right: 20px;
   }
 
   @media (max-width: 280px) {
-    top: 530px;
-    right: 5px;
+    top: 555px;
+    right: -5px;
   }
 `;
 

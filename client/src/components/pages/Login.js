@@ -61,7 +61,7 @@ const Login = () => {
     <Wrapper>
       <Title>Login page</Title>
       <div className="App">
-        <div>
+        <Register>
           <h3>Register user</h3>
           <form id="signup-form" onSubmit={register}>
             <input
@@ -81,11 +81,15 @@ const Login = () => {
             <button type="submit" value="submit">
               Create user
             </button>
-            {/* <button onClick={register}>Create user</button> */}
           </form>
-        </div>
+        </Register>
       </div>
-      <div>
+
+      <Img>
+        <img src="/dog-cat.jpeg" alt="dog and family" />
+      </Img>
+
+      <LoginDiv>
         <h3>Login</h3>
         <input
           placeholder="Email..."
@@ -103,16 +107,100 @@ const Login = () => {
           }}
         />
         <button onClick={login}>Login</button>
-        <AdminBtn id="gotoadmin">
-          <a href="/admin">Go to admin</a>
-        </AdminBtn>
-      </div>
-      <h4>User Logged in: {user?.email}</h4>
-      <button onClick={logout}>Signout</button>
+        <div className="adminButton">
+          <AdminBtn id="gotoadmin">
+            <a href="/admin">Go to admin</a>
+          </AdminBtn>
+        </div>
+
+        <SignOutDiv>
+          {" "}
+          <h4>User Logged in: {user?.email}</h4>
+          <button onClick={logout}>Signout</button>
+        </SignOutDiv>
+      </LoginDiv>
+      <Img>
+        <img src="/vetclinic.jpg" alt="dog and family" />
+      </Img>
     </Wrapper>
   );
 };
 
 export default Login;
 
-const AdminBtn = styled.div``;
+const Register = styled.div`
+  margin: 50px 0px;
+  padding: 50px 0px;
+  background: whitesmoke;
+  input {
+    height: 30px;
+    width: 150px;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 3px;
+    border: 1px solid gray;
+  }
+  button {
+    height: 30px;
+    width: 150px;
+    border-radius: 5px;
+    padding: 3px;
+    margin-left: 10px;
+    border: 1px solid var(--color-orange);
+    background: orange;
+    font-weight: bold;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
+const LoginDiv = styled.div`
+  margin: 50px 0px;
+  padding: 50px 0px;
+  background: whitesmoke;
+  input {
+    height: 30px;
+    width: 150px;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 3px;
+    border: 1px solid gray;
+  }
+  button {
+    height: 30px;
+    width: 150px;
+    border-radius: 5px;
+    padding: 3px;
+    margin-left: 10px;
+    border: 1px solid var(--color-orange);
+    background: orange;
+    font-weight: bold;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+const AdminBtn = styled.div`
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: darkslategray;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const SignOutDiv = styled.div`
+  padding-top: 50px;
+  line-height: 3;
+`;
+
+const Img = styled.div`
+  img {
+    width: 100%;
+  }
+`;

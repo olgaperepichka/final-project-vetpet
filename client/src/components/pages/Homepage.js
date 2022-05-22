@@ -141,13 +141,14 @@ const Team = styled.div`
   flex-direction: row;
   justify-content: center;
   margin-top: -25px;
+  margin-bottom: -50px;
   @media (max-width: 768px) {
     flex-direction: column;
   }
 `;
 const TeamTextDiv = styled.div`
   width: 50%;
-  padding: 20px 20px 50px 20px;
+  padding: 100px 50px;
   width: 50%;
   background: var(--color-orange);
   line-height: 1.5;
@@ -191,7 +192,7 @@ const KYTservices = styled.div`
 
 const Services = styled.div`
   width: 50%;
-  padding: 20px 20px;
+  padding: 100px 75px;
   margin: 25px 0px;
   width: 50%;
   background: var(--color-orange);
@@ -254,8 +255,9 @@ const DogContainer = styled.div`
   line-height: 1.5;
 
   img {
-    padding-top: 25px;
-    width: 60%;
+    margin-top: 25px;
+    width: 80%;
+    box-shadow: 0px 0px 5px 7px black;
     @media (max-width: 768px) {
       width: 100%;
     }

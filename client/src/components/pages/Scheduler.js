@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ServerPath from "../../const/const";
+import styled from "styled-components";
 
 const Scheduler = () => {
   const [appointment, setAppointment] = useState({
@@ -13,8 +14,6 @@ const Scheduler = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(appointment);
     fetch(`${ServerPath}/appointments`, {
       method: "POST",
       headers: {
@@ -24,13 +23,12 @@ const Scheduler = () => {
     })
       .then((res) => res.json())
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
-          console.log("appontment made");
+          alert("Appointment scheduled!");
           return;
         }
         if (response.status === 401) {
-          setErrors(response.message);
+          setErrors(error, response.message);
           return;
         }
       })
@@ -40,7 +38,7 @@ const Scheduler = () => {
   };
 
   return (
-    <>
+    <ApntWrapper>
       <h3>Make an appointment</h3>
 
       <form id="makeAppointment" onSubmit={handleSubmit}>
@@ -88,7 +86,6 @@ const Scheduler = () => {
           type="datetime-local"
           id="appointment-time"
           name="appointment-time"
-          // defaultValue="Date.now()"
           onChange={(e) =>
             setAppointment({ ...appointment, dateTime: e.target.value })
           }
@@ -98,8 +95,13 @@ const Scheduler = () => {
           Make an appointment
         </button>
       </form>
-    </>
+    </ApntWrapper>
   );
 };
+
+const ApntWrapper = styled.div`
+  margin-top: 50px;
+  margin-bottom: 50px;
+`;
 
 export default Scheduler;

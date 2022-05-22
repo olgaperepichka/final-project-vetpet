@@ -33,6 +33,10 @@ const doctorsSchema = new Schema(
       type: Array,
       require: false,
     },
+    appointments: {
+      type: Array,
+      require: false,
+    },
   },
   {
     versionKey: false,
